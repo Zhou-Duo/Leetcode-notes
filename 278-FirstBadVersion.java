@@ -1,7 +1,7 @@
 /* The isBadVersion API is defined in the parent class VersionControl.
     boolean isBadVersion(int version); */
 
-public class Solution extends VersionControl {
+class Solution {
     public int firstBadVersion(int n) {
         int left = 1;
         int right = n;
@@ -18,5 +18,10 @@ public class Solution extends VersionControl {
         }
         // 此时有 left == right，区间缩为一个点，即为答案
         return left;
+    }
+
+    public boolean isBadVersion(int n) {
+        /* return if version n is a bad version */
+        return false;
     }
 }
