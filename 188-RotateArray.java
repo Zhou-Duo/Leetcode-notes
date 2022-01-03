@@ -51,7 +51,7 @@ class Solution2 {
 * 时间复杂度：O(n)，其中 n 为数组的长度。每个元素被翻转两次，一共 n 个元素，因此总时间复杂度为 O(2n)=O(n)。
 * 空间复杂度：O(1)。 
 */
-class Solution {
+class Solution3 {
     public void rotate(int[] nums, int k) {
         int n = nums.length;
         k = k % n;
