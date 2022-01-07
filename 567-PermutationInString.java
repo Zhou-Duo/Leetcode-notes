@@ -49,33 +49,38 @@ class Solution1 {
 
 // 2. 双指针
 /* 
- * 回顾方法一的思路，我们在保证区间长度为n的情况下，去考察是否存在一个区间使得cnt 的值全为0。
- * 反过来，还可以在保证cnt的值不为正的情况下，去考察是否存在一个区间，其长度恰好为n。
- * 初始时，仅统计s1中的字符，则cnt的值均不为正，且元素值之和为一n。
- * 然后用两个指针left和right 表示考察的区间[left, right]. right 每向右移动一次，就统计一次进入区间的字符x。
- * 为保证cnt的值不为正，若此时cnt[x] > 0，则向右移动左指针，减少离开区间的字符的cnt 值直到cnt【x】≤0。
- * 注意到【left， right】的长度每增加1，cnt 的元素值之和就增加1。当[left, right]的长度恰好为n时，就意味着cnt的元素值之和为0。
- * 由于cnt的值不为正，元素值之和为0就意味着所有元素均为0，这样我们就找到了一个目标子串。
+ * 回顾方法一的思路，我们在保证区间长度为 n 的情况下，去考察是否存在一个区间使得 cnt 的值全为 0。
+ * 反过来，还可以在保证 cnt 的值不为正的情况下，去考察是否存在一个区间，其长度恰好为 n。
+ * 初始时，仅统计 s1 中的字符，则 cnt 的值均不为正，且元素值之和为 -n。
+ * 然后用两个指针 left 和 right 表示考察的区间 [left, right]。 right 每向右移动一次，就统计一次进入区间的字符 x。
+ * 为保证 cnt 的值不为正，若此时 cnt[x] > 0，则向右移动左指针，减少离开区间的字符的 cnt 值直到 cnt[x] ≤ 0。
+ * 注意到 [left, right]的长度每增加 1，cnt的元素值之和就增加1。当 [left, right]的长度恰好为 n 时，就意味着cnt的元素值之和为0。
+ * 由于 cnt 的值不为正，元素值之和为 0 就意味着所有元素均为 0，这样我们就找到了一个目标子串。
  */
 class Solution2 {
     public boolean checkInclusion(String s1, String s2) {
-        int n = s1.length(), m = s2.length();
-        if (n > m) {
+        int targetLen = s1.length();
+        int Len = s2.length();
+        // 首先判断特殊情况，targetLen > Len
+        if (targetLen > Len) {
             return false;
         }
+
+        // 用数组 cnt 代表赊账
         int[] cnt = new int[26];
-        for (int i = 0; i < n; ++i) {
+        for (int i = 0; i < targetLen; i++) {
             --cnt[s1.charAt(i) - 'a'];
         }
+
         int left = 0;
-        for (int right = 0; right < m; ++right) {
+        for (int right = 0; right < Len; right++) {
             int x = s2.charAt(right) - 'a';
             ++cnt[x];
             while (cnt[x] > 0) {
                 --cnt[s2.charAt(left) - 'a'];
                 ++left;
             }
-            if (right - left + 1 == n) {
+            if (right - left + 1 == targetLen) {
                 return true;
             }
         }
