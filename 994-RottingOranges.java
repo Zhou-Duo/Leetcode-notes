@@ -16,13 +16,10 @@ class Solution {
     public int orangesRotting(int[][] grid) {
         int m = grid.length, n = grid[0].length;
         Queue<int[]> queue = new LinkedList<int[]>();
-        // 对 rotten 和 fresh 计数，将 rotten 果子加入 queue
-        int rotten = 0;
         int fresh = 0;
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 if (grid[i][j] == 2) {
-                    rotten++;
                     queue.offer(new int[] { i, j });
                 } else if (grid[i][j] == 1)
                     fresh++;
