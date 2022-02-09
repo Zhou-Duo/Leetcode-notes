@@ -21,10 +21,10 @@ class Solution1 {
 // 2. 双指针
 /*
 * 时间复杂度：O(m+n)。
-* 指针移动单调递增，最多移动 m+nm+n 次，因此时间复杂度为 O(m+n)。
+* 指针移动单调递增，最多移动 m+n 次，因此时间复杂度为 O(m+n)。
 *
 * 空间复杂度：O(m+n)。
-* 需要建立长度为 m+nm+n 的中间数组 sorted。
+* 需要建立长度为 m+n 的中间数组 sorted。
 */
 class Solution2 {
     public void merge(int[] nums1, int m, int[] nums2, int n) {
