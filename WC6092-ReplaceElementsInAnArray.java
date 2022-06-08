@@ -1,3 +1,4 @@
+// https://leetcode.cn/problems/replace-elements-in-an-array/
 class Solution {
     public int[] arrayChange(int[] nums, int[][] operations) {
         int[] delta = new int[1000001];
