@@ -3,8 +3,7 @@ public class ListNode {
     int val;
     ListNode next;
 
-    ListNode() {
-    }
+    ListNode() {}
 
     ListNode(int val) {
         this.val = val;
@@ -73,6 +72,27 @@ class Solution2 {
         }
         curr.next.next = b;
         curr.next = a;
+        return dummy.next;
+    }
+}
+
+// 头插法
+class Solution3 {
+    public ListNode reverseBetween(ListNode head, int left, int right) {
+        ListNode dummy = new ListNode(-1, head);
+        ListNode g = dummy;
+        // 将 curr 移动至 要反转的 ListNode 前一个
+        for (int i = 0; i < left - 1; i++) {
+            g = g.next;
+        }
+        // 反转 right - left + 1 个 ListNode
+        ListNode b = g.next;
+        for (int i = 0; i < right - left; i++) {
+            ListNode tmp = b.next;
+            b.next = b.next.next;
+            tmp.next = g.next;
+            g.next = tmp;
+        }
         return dummy.next;
     }
 }
