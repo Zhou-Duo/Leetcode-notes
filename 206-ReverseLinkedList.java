@@ -18,7 +18,7 @@ class Solution1 {
         if (head == null || head.next == null)
             return head;
         ListNode newHead = reverseList(head.next);
-        head.next.next = head;
+        head.next.next = head; // ***此处利用原有关系！
         head.next = null;
         return newHead;
     }
