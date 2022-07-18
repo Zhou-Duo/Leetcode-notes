@@ -21,7 +21,7 @@ class Solution1 {
                 orderTarget.add(target.charAt(i));
             if (start.charAt(i) == 'L' && orderStart.size() > orderTarget.size())
                 return false;
-            if (start.charAt(i) == 'R' && orderStart.size() < orderTarget.size())
+            if (target.charAt(i) == 'R' && orderStart.size() < orderTarget.size())
                 return false;
         }
         while (!orderStart.isEmpty() || !orderTarget.isEmpty()) {
